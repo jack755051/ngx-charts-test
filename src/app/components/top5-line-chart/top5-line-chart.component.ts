@@ -17,6 +17,8 @@ export class Top5LineChartComponent implements OnInit {
   topToggleArr: string[] = [];
   dataArr: number[][] = [];
 
+  legned: string[] = []
+
   seriesArr: any[] = [];
   seriesDataArr: number[][] = [];
 
@@ -57,7 +59,7 @@ export class Top5LineChartComponent implements OnInit {
     'Dec',
   ];
 
-  constructor(private echartsService: EchartsService) {}
+  constructor(private echartsService: EchartsService) { }
 
   ngOnInit() {
     this.mapFunction();
@@ -71,6 +73,8 @@ export class Top5LineChartComponent implements OnInit {
   mapFunction() {
     this.topToggleArr = this.response.map((item) => item.topToggle);
     console.log('提取 隨機歷次測驗時間 種類', this.topToggleArr);
+
+    this.legned = this.topToggleArr
 
     this.dataArr = this.response.map((item) => item.data);
     console.log('提取 隨機歷次測驗時間 方陣', this.dataArr);
@@ -103,7 +107,8 @@ export class Top5LineChartComponent implements OnInit {
         text: '前5教材閱讀次數統計',
       },
       legend: {
-        data: this.topToggleArr,
+        // data: this.topToggleArr,
+        data: this.legned
       },
       tooltip: {
         trigger: 'axis',
