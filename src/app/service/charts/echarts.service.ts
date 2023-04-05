@@ -30,7 +30,7 @@ export class EchartsService {
       );
       // .replace(/\//g, '-');
 
-      const getTestNumber = this.randomTestNumberFunction();
+      const getTestNumber = this.randomTestNumberFunction(dataTime);
 
       const newData: HistoryTestTimeResponse = {
         date: getDateData,
@@ -60,7 +60,7 @@ export class EchartsService {
     return new Date(randomTime);
   }
 
-  randomTestNumberFunction() {
+  randomTestNumberFunction(data: number) {
     // const randomNumber = Math.round(Math.random() * 20);
     // const randomNumberType = 'E-book' + randomNumber;
 
@@ -68,7 +68,7 @@ export class EchartsService {
     let randomNumber: number;
 
     do {
-      randomNumber = Math.floor(Math.random() * 20) + 1;
+      randomNumber = Math.floor(Math.random() * data) + 1;
     } while (this.usedNumbers.has(randomNumber));
 
     this.usedNumbers.add(randomNumber);

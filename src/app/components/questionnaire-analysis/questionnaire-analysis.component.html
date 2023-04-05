@@ -1,0 +1,18 @@
+<div class="container">
+  <div echarts [options]="options" class="demo-chart"></div>
+
+  <div class="form">
+    <table class="steelBlueCols">
+      <thead>
+        <td>答案選項</td>
+        <td>填答次數</td>
+        <td>填答次數百分比</td>
+      </thead>
+      <tr *ngFor="let item of ngForArr">
+        <td>{{ item.name }}</td>
+        <td>{{ item.value }}</td>
+        <td>{{ item.rate }}</td>
+      </tr>
+    </table>
+  </div>
+</div>
